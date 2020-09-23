@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+  <Header></Header>
+  <FrameworkList @updateFooter="updateFooter = $event"></FrameworkList>
+  <Footer :updateFooter="updatedFooter"></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FrameworkList from "@/components/Frameworks/FrameworkList";
+
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    Header,
+    Footer,
+    FrameworkList,
+    
+    },
+
+    data() {
+      return {
+        updatedFooter: ''
+      }
+    },
+
+    methods: {
+      updateFooter(event) {
+        console.log(event);
+        this.updatedFooter = event
+      }
+    }
   }
-}
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
